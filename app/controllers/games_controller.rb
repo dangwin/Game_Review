@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+before_action :find_game, only: [:show, :edit, :destroy]
+
     def index 
         @games = Game.all
     end 
@@ -6,6 +8,10 @@ class GamesController < ApplicationController
     def new
         @game = Game.new
     end
+
+    def show
+        @game = Game.find(params[:id]) 
+    end 
 
     def create
         @game = Game.new(game_params)
@@ -16,11 +22,31 @@ class GamesController < ApplicationController
     end
 end 
 
+    def edit
+        if @game.update(game_params)
+            redirect_to game_path(@game)
+        else
+            render 'edit'
+    end 
+end 
+
+    def update
+    end
+
+    def destroy
+    end 
+
+
     private 
 
     def game_params
-        params.require(:game).permit(:title, :description, :genre)
+        params.require(:game).permit(:title, :description, :genre, :platform)
 
     end
+
+    def find_game
+        @game = Game.find(params[:id]) 
+    end 
+
 
 end
