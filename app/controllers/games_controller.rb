@@ -40,7 +40,7 @@ end
     private 
 
     def game_params
-        params.require(:game).permit(:title, :description, :genre, :platform)
+        params.permit(:title, :first_name, :last_name, :platform, :description, :genre)
 
     end
 

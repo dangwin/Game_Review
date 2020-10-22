@@ -1,6 +1,17 @@
-<h2><%= @game.title %> </h2>
-<h2><%= @game.platform %> </h2>
-<h2><%= @game.genre%> </h2>
-<h2><%= @game.description %> </h2>
+<h1> Game Information </h1>
+
+<h4>Game Title: <%= @game.title %> </h4>
+<h4>Platform: <%= @game.platform %> </h4>
+<h4>Name of Creator: <%= @game.creator.first_name%> <%= @game.creator.last_name%>  </h4>
+<h4>Genre: <%= @game.genre%> </h4>
+<h4>Brief Description: <%= @game.description %> </h4>
+
+
+<%=@game.reviews do |rev|
+    "#{rev.content} by #{rev.reviewer.first_name}"
+    rev.comment
+    end 
+  %>
+
 
 
