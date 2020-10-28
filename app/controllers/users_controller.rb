@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  
-    skip_before_action :require_login, only: [:new, :create]
+
 
     def new
         @user = User.new
@@ -12,14 +11,12 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
-          @errors = @user.errors
           render :new
         end
       end
     
       def show
         @user = User.find(params[:id])
-        @reviews = @user.reviews.most_recent
       end
     
       private
@@ -30,6 +27,3 @@ class UsersController < ApplicationController
     end
     
 
-
-
-end

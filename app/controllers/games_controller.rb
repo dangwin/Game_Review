@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 before_action :find_game, only: [:show, :edit, :destroy]
 
+
     def index 
         @games = Game.all
     end 
