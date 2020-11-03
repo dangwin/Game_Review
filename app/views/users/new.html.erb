@@ -1,3 +1,8 @@
+ <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+
+
 <h1>SignUp</h1>
 
 <%= form_for(@user, url: signup_path) do |f| %>

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    before_action :set_current_user, :require_login
+
+    helper_method :current_user, :require_login
 
 
     private
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_current_user
+  def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
 

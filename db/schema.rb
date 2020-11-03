@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_164248) do
     t.text "description"
     t.string "genre"
     t.integer "creator_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "platform"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_164248) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
