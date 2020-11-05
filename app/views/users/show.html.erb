@@ -1,4 +1,4 @@
-<h1> Welcome <%= @user.full_name %></h1>
+<h1> Welcome <%= @user.first_name %> <%= @user.last_name %> </h1>
 
 <h3>Here are your games</h3>
 
@@ -11,5 +11,6 @@
 
 <%= link_to "Add a New Game", new_game_path %><br><br>
 <%= link_to "View All Games", games_path %><br><br>
+<%= link_to 'Delete your account', user_path(current_user), method: :delete %><br><br>
 <%= link_to "LogOut", logout_url, method: :delete %>
 

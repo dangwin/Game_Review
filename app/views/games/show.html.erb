@@ -12,10 +12,11 @@
 <table>
   <% @game.reviews.each do |review| %>
     <tr>
-       <td><%= review.content %> </td>
+       <td><i><%= review.content %></i> </td>
        <td>by</td>
-       <td><%= review.reviewer.first_name %> <%= review.reviewer.last_name %></td> 
+       <td><b><%= review.reviewer.first_name %> <%= review.reviewer.last_name %></b></td> 
        <td><%=link_to "Edit Review", edit_game_review_path(@game, review)%></li></td>
+       <td><%=link_to "Delete Review", game_review_path(@game, review), method: :delete %></li></td>
     </tr>
   <% end %>
 </table><br><br>
@@ -23,6 +24,8 @@
 <%= link_to "Add Review", new_game_review_path(@game) %><br><br>
 
 <%= link_to "Home", user_path(current_user) %><br><br>
+
+<%= link_to "View All Games", games_path %><br><br>
 
 <%= link_to "LogOut", logout_url, method: :delete %>
 

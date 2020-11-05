@@ -1,5 +1,9 @@
+<%= flash[:message] %>
 <h1>Welcome to the Game Review App</h1>
+
+<img src="https://www.gamefreaks.co.nz/wp-content/uploads/2018/06/blWvh.jpg" alt="Trulli" width="603" height="271">
 
 <li><%= link_to "Log In", login_url %></li>
 <li><%= link_to "Sign Up", signup_url %></li>
+<%= button_to "Log in with Google", '/auth/google_oauth2' %>
 

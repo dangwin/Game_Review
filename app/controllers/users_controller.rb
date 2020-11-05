@@ -25,11 +25,31 @@ class UsersController < ApplicationController
           render 'new'
         end
       end
-    
-      
-    
+
+      def omniauth 
+        @user = User.create_from_omniauth(auth)
+        if @user.valid?
+            session[:user_id] = @user.id
+            redirect_to @user
+        else
+            flash[:message] = user.errors.full_messages.join(", ")
+            redirect_to root_path
+        end
+    end
+
+    def destroy
+      session[:user_id] = nil
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to root_path
+    end 
+
       private
 
+      def auth
+        request.env['omniauth.auth']
+    end
+    
 
       def current_user
         @current_user ||= User.find_by(id: session[:user_id])

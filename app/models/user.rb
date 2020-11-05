@@ -9,7 +9,16 @@ class User < ActiveRecord::Base
       self.first_name + " " + self.last_name
     end
     
-
-
-
+    def self.create_from_omniauth(auth)
+      User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+          u.email = auth['info']['email']
+          u.first_name = auth['info']['first_name']
+          u.last_name = auth['info']['last_name']
+          u.password = SecureRandom.hex(16)
+      end
+  end
 end
+    
+
+
+

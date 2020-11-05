@@ -34,6 +34,16 @@ class ReviewsController < ApplicationController
     end 
     end 
 
+    def destroy
+        if @review.reviewer == current_user
+            @review.destroy
+            redirect_to game_path(@game)
+        else 
+            flash[:alert] = "You are not allowed to delete this review"
+            redirect_to game_path(@game)
+    end 
+end 
+
 
 private
 
@@ -50,5 +60,4 @@ private
     end
 
 
-    
 end

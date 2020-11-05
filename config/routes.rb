@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     root 'landing#home'
+    get '/auth/google_oauth2/callback', to: 'users#omniauth'
+
 resources :games do
     resources :reviews
 end
@@ -18,6 +20,7 @@ resources :users do
     resources :games, only: [:create, :show, :edit, :update] do 
     end 
     end
+   
 end
   
 
