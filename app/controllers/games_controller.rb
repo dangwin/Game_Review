@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-before_action :find_game, only: [:show, :edit, :destroy]
+before_action :find_game, only: [:show, :edit, :update, :destroy]
 before_action :require_login, only: [:index, :show, :create, :edit, :update, :destroy]
 before_action :current_user
 
@@ -13,6 +13,7 @@ before_action :current_user
 
     def show
         @game = Game.find(params[:id]) 
+        user = current_user
     end 
 
     def create
@@ -28,14 +29,15 @@ before_action :current_user
 end 
 
     def edit
+        
+end 
+
+    def update
         if @game.update(game_params)
             redirect_to game_path(@game)
         else
             render 'edit'
     end 
-end 
-
-    def update
     end
 
     def destroy

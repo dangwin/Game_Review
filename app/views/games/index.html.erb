@@ -4,3 +4,7 @@
 <% end %>
 
 <%= link_to "Add Game", new_game_path %>
+<br>
+<br>
+<%= link_to "Home", user_path(current_user) %><br><br>
+<%= link_to "LogOut", logout_url, method: :delete %>

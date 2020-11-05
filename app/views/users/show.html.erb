@@ -4,11 +4,12 @@
 
 <% @games.each do |game| %>
 <ul>
-    <li><%=link_to game.title, game_path(game) %> <%=link_to "Delete", game_path(game), method: :delete, confirm: "Are you sure you want to delete this game?" %></li>
+    <li><%=link_to game.title, game_path(game) %> <br><br><%=link_to "Delete", game_path(game), method: :delete %></li> <%=link_to "Edit Game", edit_game_path(game)%></li>
     </ul>
 <% end %>
 
 
 <%= link_to "Add a New Game", new_game_path %><br><br>
-<li><%= link_to "LogOut", logout_url, method: :delete %></li>
+<%= link_to "View All Games", games_path %><br><br>
+<%= link_to "LogOut", logout_url, method: :delete %>
 

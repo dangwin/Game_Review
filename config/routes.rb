@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
     root 'landing#home'
-resources :games, :review, :users
+resources :games do
+    resources :reviews
+end
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
 
